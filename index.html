@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LightLab - Ray Optics | Class 10 Science</title>
+<meta name="description" content="Interactive ray optics simulations and practice questions for Class 10 science students.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo"><div class="logo-icon">🔭</div><span class="logo-text">LightLab</span></a>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link active">Home</a></li>
+      <li><a href="#concepts" class="nav-link">Concepts</a></li>
+      <li><a href="#simulations" class="nav-link">Simulations</a></li>
+      <li><a href="#quiz" class="nav-link">Practice Quiz</a></li>
+    </ul>
+    <div class="nav-badge">Class 10 &middot; Chapter 10</div>
+  </div>
+</nav>
+<section class="hero" id="home">
+  <div class="hero-bg"><canvas id="hero-canvas"></canvas></div>
+  <div class="hero-content">
+    <div class="hero-badge">Chapter 10 &middot; Light &mdash; Ray Optics</div>
+    <h1 class="hero-title">Explore the <span class="gradient-text">Science of Light</span></h1>
+    <p class="hero-desc">Interactive simulations, experiments, and practice questions. Understand ray optics visually, not just theoretically.</p>
+    <div class="hero-actions">
+      <a href="#simulations" class="btn btn-primary">Start Experimenting &rarr;</a>
+      <a href="#concepts" class="btn btn-ghost">View Concepts</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">7</span><span class="stat-label">Simulations</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">30</span><span class="stat-label">Practice Questions</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">9</span><span class="stat-label">Key Concepts</span></div>
+    </div>
+  </div>
+</section>
+<section class="concepts" id="concepts">
+  <div class="section-header">
+    <div class="section-tag">Theory</div>
+    <h2>Key Concepts</h2>
+    <p>Quick-reference theory cards for every topic in the chapter</p>
+  </div>
+  <div class="concepts-grid" id="concepts-grid"></div>
+</section>
+<section class="simulations" id="simulations">
+  <div class="section-header">
+    <div class="section-tag">Experiments</div>
+    <h2>Interactive Simulations</h2>
+    <p>Adjust parameters and see physics in action in real time</p>
+  </div>
+  <div class="sim-tabs">
+    <button class="sim-tab active" data-sim="reflection">Reflection</button>
+    <button class="sim-tab" data-sim="refraction">Refraction</button>
+    <button class="sim-tab" data-sim="concave-mirror">Concave Mirror</button>
+    <button class="sim-tab" data-sim="convex-mirror">Convex Mirror</button>
+    <button class="sim-tab" data-sim="convex-lens">Convex Lens</button>
+    <button class="sim-tab" data-sim="concave-lens">Concave Lens</button>
+    <button class="sim-tab" data-sim="prism">Prism</button>
+  </div>
+  <div class="sim-panel active" id="sim-reflection">
+    <div class="sim-layout">
+      <div class="sim-canvas-wrap"><canvas id="canvas-reflection" width="640" height="380"></canvas></div>
+      <div class="sim-controls">
+        <h3>Law of Reflection</h3>
+        <p class="sim-desc">Angle of incidence equals angle of reflection. Both measured from the normal to the mirror surface.</p>
+        <div class="control-group">
+          <label>Angle of Incidence: <span id="reflection-angle-val">45</span> deg</label>
+          <input type="range" id="reflection-angle" min="5" max="80" value="45" class="slider">
+        </div>
+        <div class="formula-box"><div class="formula">i = r</div><div class="formula-note">Angle of incidence = Angle of reflection</div></div>
+        <div class="sim-info-box">
+          <div class="info-row"><span>Angle of Incidence (i)</span><span id="r-i-val">45</span></div>
+          <div class="info-row"><span>Angle of Reflection (r)</span><span id="r-r-val">45</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sim-panel" id="sim-refraction">
+    <div class="sim-layout">
+      <div class="sim-canvas-wrap"><canvas id="canvas-refraction" width="640" height="380"></canvas></div>
+      <div class="sim-controls">
+        <h3>Refraction and Snell Law</h3>
+        <p class="sim-desc">Light bends when passing between media. Increase angle past critical angle to see Total Internal Reflection.</p>
+        <div class="control-group">
+          <label>Angle of Incidence: <span id="refraction-angle-val">45</span> deg</label>
+          <input type="range" id="refraction-angle" min="5" max="85" value="45" class="slider">
+        </div>
+        <div class="control-group">
+          <label>Medium below interface:</label>
+          <select id="refraction-medium" class="select-control">
+            <option value="1.5">Glass (n = 1.50)</option>
+            <option value="1.33">Water (n = 1.33)</option>
+            <option value="2.42">Diamond (n = 2.42)</option>
+            <option value="1.0003">Air (n = 1.00)</option>
+            <option value="1.45">Kerosene (n = 1.45)</option>
+          </select>
+        </div>
+        <div class="formula-box"><div class="formula">n1 sin t1 = n2 sin t2</div><div class="formula-note">Snell Law of Refraction</div></div>
+        <div class="sim-info-box">
+          <div class="info-row"><span>n1 (Air)</span><span>1.000</span></div>
+          <div class="info-row"><span>n2 (Medium)</span><span id="ref-n2-val">1.500</span></div>
+          <div class="info-row"><span>Angle t1</span><span id="ref-t1-val">45 deg</span></div>
+          <div class="info-row"><span>Angle t2</span><span id="ref-t2-val">--</span></div>
+          <div class="info-row tir" id="ref-tir-row" style="display:none"><span>Status</span><span>Total Internal Reflection!</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sim-panel" id="sim-concave-mirror">
+    <div class="sim-layout">
+      <div class="sim-canvas-wrap"><canvas id="canvas-concave-mirror" width="640" height="400"></canvas></div>
+      <div class="sim-controls">
+        <h3>Concave Mirror</h3>
+        <p class="sim-desc">A converging mirror. Move the object to explore image position and nature.</p>
+        <div class="control-group">
+          <label>Focal Length f: <span id="cm-f-val">15</span> cm</label>
+          <input type="range" id="cm-focal" min="8" max="22" value="15" class="slider">
+        </div>
+        <div class="control-group">
+          <label>Object Distance u: <span id="cm-u-val">30</span> cm</label>
+          <input type="range" id="cm-obj" min="5" max="55" value="30" class="slider">
+        </div>
+        <div class="formula-box"><div class="formula">1/v + 1/u = 1/f</div><div class="formula-note">New Cartesian Sign Convention</div></div>
+        <div class="sim-info-box">
+          <div class="info-row"><span>u (Object dist)</span><span id="cm-u-info">--</span></div>
+          <div class="info-row"><span>v (Image dist)</span><span id="cm-v-info">--</span></div>
+          <div class="info-row"><span>f (Focal length)</span><span id="cm-f-info">--</span></div>
+          <div class="info-row"><span>m (Magnification)</span><span id="cm-m-info">--</span></div>
+          <div class="info-row highlight"><span>Image Nature</span><span id="cm-nature">--</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sim-panel" id="sim-convex-mirror">
+    <div class="sim-layout">
+      <div class="sim-canvas-wrap"><canvas id="canvas-convex-mirror" width="640" height="400"></canvas></div>
+      <div class="sim-controls">
+        <h3>Convex Mirror</h3>
+        <p class="sim-desc">Always forms virtual, erect, diminished image. Used as rear-view mirrors.</p>
+        <div class="control-group">
+          <label>Focal Length f: <span id="xm-f-val">15</span> cm</label>
+          <input type="range" id="xm-focal" min="8" max="22" value="15" class="slider">
+        </div>
+        <div class="control-group">
+          <label>Object Distance u: <span id="xm-u-val">30</span> cm</label>
+          <input type="range" id="xm-obj" min="5" max="55" value="30" class="slider">
+        </div>
+        <div class="formula-box"><div class="formula">1/v + 1/u = 1/f</div><div class="formula-note">f is positive for convex mirror</div></div>
+        <div class="sim-info-box">
+          <div class="info-row"><span>u (Object dist)</span><span id="xm-u-info">--</span></div>
+          <div class="info-row"><span>v (Image dist)</span><span id="xm-v-info">--</span></div>
+          <div class="info-row"><span>f (Focal length)</span><span id="xm-f-info">--</span></div>
+          <div class="info-row"><span>m (Magnification)</span><span id="xm-m-info">--</span></div>
+          <div class="info-row highlight"><span>Image Nature</span><span id="xm-nature">--</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sim-panel" id="sim-convex-lens">
+    <div class="sim-layout">
+      <div class="sim-canvas-wrap"><canvas id="canvas-convex-lens" width="640" height="400"></canvas></div>
+      <div class="sim-controls">
+        <h3>Convex Lens</h3>
+        <p class="sim-desc">Converging lens. Image nature changes based on object distance relative to focal length.</p>
+        <div class="control-group">
+          <label>Focal Length f: <span id="cl-f-val">15</span> cm</label>
+          <input type="range" id="cl-focal" min="8" max="22" value="15" class="slider">
+        </div>
+        <div class="control-group">
+          <label>Object Distance u: <span id="cl-u-val">30</span> cm</label>
+          <input type="range" id="cl-obj" min="5" max="55" value="30" class="slider">
+        </div>
+        <div class="formula-box"><div class="formula">1/v - 1/u = 1/f</div><div class="formula-note">f is positive for convex lens</div></div>
+        <div class="sim-info-box">
+          <div class="info-row"><span>u (Object dist)</span><span id="cl-u-info">--</span></div>
+          <div class="info-row"><span>v (Image dist)</span><span id="cl-v-info">--</span></div>
+          <div class="info-row"><span>f (Focal length)</span><span id="cl-f-info">--</span></div>
+          <div class="info-row"><span>m (Magnification)</span><span id="cl-m-info">--</span></div>
+          <div class="info-row highlight"><span>Image Nature</span><span id="cl-nature">--</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sim-panel" id="sim-concave-lens">
+    <div class="sim-layout">
+      <div class="sim-canvas-wrap"><canvas id="canvas-concave-lens" width="640" height="400"></canvas></div>
+      <div class="sim-controls">
+        <h3>Concave Lens</h3>
+        <p class="sim-desc">Diverging lens. Always produces a virtual, erect, diminished image. Corrects myopia.</p>
+        <div class="control-group">
+          <label>Focal Length f: <span id="xl-f-val">15</span> cm</label>
+          <input type="range" id="xl-focal" min="8" max="22" value="15" class="slider">
+        </div>
+        <div class="control-group">
+          <label>Object Distance u: <span id="xl-u-val">30</span> cm</label>
+          <input type="range" id="xl-obj" min="5" max="55" value="30" class="slider">
+        </div>
+        <div class="formula-box"><div class="formula">1/v - 1/u = 1/f</div><div class="formula-note">f is negative for concave lens</div></div>
+        <div class="sim-info-box">
+          <div class="info-row"><span>u (Object dist)</span><span id="xl-u-info">--</span></div>
+          <div class="info-row"><span>v (Image dist)</span><span id="xl-v-info">--</span></div>
+          <div class="info-row"><span>f (Focal length)</span><span id="xl-f-info">--</span></div>
+          <div class="info-row"><span>m (Magnification)</span><span id="xl-m-info">--</span></div>
+          <div class="info-row highlight"><span>Image Nature</span><span id="xl-nature">--</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sim-panel" id="sim-prism">
+    <div class="sim-layout">
+      <div class="sim-canvas-wrap"><canvas id="canvas-prism" width="640" height="380"></canvas></div>
+      <div class="sim-controls">
+        <h3>Prism and Dispersion</h3>
+        <p class="sim-desc">White light splits into VIBGYOR spectrum through a prism because each colour has a different refractive index in glass.</p>
+        <div class="control-group">
+          <label>Prism Angle A: <span id="prism-angle-val">60</span> deg</label>
+          <input type="range" id="prism-angle" min="30" max="75" value="60" class="slider">
+        </div>
+        <div class="formula-box"><div class="formula">n = sin[(A+D)/2] / sin[A/2]</div><div class="formula-note">D is angle of minimum deviation</div></div>
+        <div class="sim-info-box">
+          <div class="info-row"><span>Highest deviation</span><span style="color:#8b00ff">Violet</span></div>
+          <div class="info-row"><span>Lowest deviation</span><span style="color:#ff4444">Red</span></div>
+          <div class="info-row"><span>Order top to bottom</span><span>VIBGYOR</span></div>
+          <div class="info-row"><span>Phenomenon</span><span style="color:#22d3ee">Dispersion</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="quiz-section" id="quiz">
+  <div class="section-header">
+    <div class="section-tag">Practice</div>
+    <h2>Practice Quiz</h2>
+    <p>Test your understanding with 30 questions covering the full chapter</p>
+  </div>
+  <div class="quiz-wrap">
+    <div class="quiz-header-bar">
+      <div>
+        <div class="quiz-score-display" id="score-display">Score: 0/0</div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill" style="width:0%"></div></div>
+      </div>
+      <button class="btn btn-ghost btn-sm" onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+    <div class="question-card">
+      <div class="q-num" id="q-num">Question 1 of 30</div>
+      <div class="q-text" id="q-text"></div>
+      <div class="q-options" id="q-options"></div>
+      <div class="q-explanation" id="q-explanation"></div>
+    </div>
+    <div class="quiz-nav">
+      <div></div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost btn-sm" id="btn-submit" disabled>Check Answer</button>
+        <button class="btn btn-primary btn-sm" id="btn-next" style="display:none">Next Question</button>
+      </div>
+    </div>
+    <div class="quiz-result-card" id="quiz-result" style="display:none">
+      <div style="font-size:3rem;margin-bottom:12px">&#127881;</div>
+      <div class="result-score" id="result-score"></div>
+      <div class="result-label">You scored <strong id="result-pct"></strong> on the Ray Optics Quiz</div>
+      <div class="result-grade" id="result-grade" style="display:inline-block;padding:8px 28px;border-radius:12px;margin-bottom:24px;font-size:1.4rem;font-weight:800;"></div><br>
+      <div class="result-label" id="result-msg"></div><br>
+      <button class="btn btn-primary" onclick="restartQuiz()">Try Again</button>
+    </div>
+  </div>
+</section>
+<footer>
+  <p>Made with love for <span>Class 10 Science Students</span> &middot; Light Ray Optics &middot; Chapter 10</p>
+</footer>
+<script>
+const CONCEPTS=[
+  {icon:'&#128262;',title:'Reflection of Light',body:'When light falls on a polished surface it bounces back into the same medium. Laws: (i) angle of incidence = angle of reflection, (ii) incident ray, normal and reflected ray are coplanar.',formula:'angle i = angle r'},
+  {icon:'&#129704;',title:'Spherical Mirrors',body:'Concave mirrors curve inward (converging) and convex mirrors curve outward (diverging). Radius of curvature R = 2f. Key points: Pole P, Focus F, Centre of Curvature C.',formula:'f = R / 2'},
+  {icon:'&#128208;',title:'Mirror Formula and Magnification',body:'Relates object distance u, image distance v and focal length f. Magnification m = -v/u. Positive m means virtual erect image; negative m means real inverted image.',formula:'1/v + 1/u = 1/f'},
+  {icon:'&#128167;',title:'Refraction of Light',body:'Light bends when passing from one transparent medium to another due to change in speed. Bends toward the normal entering a denser medium; away when entering a rarer medium.',formula:'n = c / v'},
+  {icon:'&#128207;',title:"Snell's Law",body:'The ratio of sine of angle of incidence to sine of angle of refraction is constant for given pair of media and colour of light. This constant is the refractive index.',formula:'n1 sin(t1) = n2 sin(t2)'},
+  {icon:'&#128142;',title:'Total Internal Reflection',body:'When light travels from denser to rarer medium at angle greater than critical angle, it is completely reflected back. Used in optical fibres and explains sparkle of diamonds.',formula:'sin C = 1/n'},
+  {icon:'&#128269;',title:'Lenses',body:'Convex (converging) lens is thicker at centre. Concave (diverging) lens is thinner at centre. Lens formula and New Cartesian sign convention apply to both.',formula:'1/v - 1/u = 1/f'},
+  {icon:'&#9889;',title:'Power of a Lens',body:'Power is reciprocal of focal length in metres. Unit is dioptre (D). Converging lenses have positive power; diverging lenses have negative power. Powers add for lenses in contact.',formula:'P = 1/f (in metres)'},
+  {icon:'&#127752;',title:'Dispersion of Light',body:'White light splits into seven colours VIBGYOR when passing through a prism because each colour has a different refractive index in glass. Violet deviates most, red least.',formula:'n_violet > n_red'}
+];
+document.addEventListener('DOMContentLoaded',function(){
+  var grid=document.getElementById('concepts-grid');
+  CONCEPTS.forEach(function(c){
+    var div=document.createElement('div');
+    div.className='concept-card';
+    div.innerHTML='<div class="concept-icon">'+c.icon+'</div><div class="concept-title">'+c.title+'</div><div class="concept-body">'+c.body+'</div><div class="concept-formula">'+c.formula+'</div>';
+    grid.appendChild(div);
+  });
+  document.querySelectorAll('.sim-tab').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      document.querySelectorAll('.sim-tab').forEach(function(b){b.classList.remove('active');});
+      document.querySelectorAll('.sim-panel').forEach(function(p){p.classList.remove('active');});
+      btn.classList.add('active');
+      document.getElementById('sim-'+btn.dataset.sim).classList.add('active');
+      if(window.redrawAll)setTimeout(redrawAll,50);
+    });
+  });
+  var sections=['home','concepts','simulations','quiz'];
+  window.addEventListener('scroll',function(){
+    var cur='home';
+    sections.forEach(function(id){var el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-100)cur=id;});
+    document.querySelectorAll('.nav-link').forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+  });
+});
+</script>
+<script src="simulations.js"></script>
+<script src="questions.js"></script>
+</body>
+</html>
